@@ -9,15 +9,23 @@ const main = () => {
 };
 
 const render = ([desertImage, googleImage]) => {
-  const ctx = document.getElementById('testCanvas').getContext('2d');
+  const ctx = document.querySelector('#test-canvas').getContext('2d');
+
   ctx.canvas.width = desertImage.width;
   ctx.canvas.height = desertImage.height;
 
   ctx.drawImage(desertImage, 0, 0);
 
-  const linearGradient = ctx.createLinearGradient(0, 0, 0, googleImage.height);
-  linearGradient.addColorStop(0, 'transparent');
-  linearGradient.addColorStop(1, '#000');
+  const centerX = googleImage.width / 2;
+  const centerY = googleImage.height / 2;
 
-  ctx.drawImageGradient(googleImage, 12, 65, linearGradient);
+  const radialGradient = ctx.createRadialGradient(centerX, centerY, 1, centerX, centerY, centerX);
+  radialGradient.addColorStop(0, 'transparent');
+  radialGradient.addColorStop(1, '#000');
+
+  ctx.drawImageGradient(googleImage, 12, 65, radialGradient);
+
+  const imageData = ctx.canvas.toDataURL('image/png');
+
+  document.querySelector('#data-url').value = imageData;
 };

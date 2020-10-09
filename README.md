@@ -10,7 +10,7 @@ This project is based on the (archived) [canvasimagegradient](https://code.googl
 
 ## Usage
 
-To use, download `canvas-image-gradient.js`. This will bind the `drawImageGradient` function to the `CanvasRenderingContext2D` object.
+To use, download `dist/bundle.js`. This will bind the `drawImageGradient` function to the `CanvasRenderingContext2D` object.
 
 ## Examples
 
